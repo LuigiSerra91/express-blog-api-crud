@@ -40,7 +40,15 @@ const store = (req, res) => {
 const update = (req, res) => {
     const employe = employees.find(employe => employe.id === Number(req.params.id))
     console.log(employe);
-    
+    const newEmploye = {
+        ...req.body,
+        id: req.body.id,
+        name: req.body.name,
+        occupation: req.body.occupation,   
+    }
+     employees[employe] = newEmploye
+     
+    fs.writeFileSync('./data/data.js',`module.exports=${JSON.stringify(employees,null,2)}`)
     
     if(!employe){
       return res.status(404).json({
@@ -48,9 +56,7 @@ const update = (req, res) => {
       })
     }
     return res.json({
-        id: req.body.id,
-        name: req.body.name,
-        occupation: req.body.occupation,
+       data: newEmploye
     })
 
     
