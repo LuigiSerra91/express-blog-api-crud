@@ -37,8 +37,28 @@ const store = (req, res) => {
     })
 }
 
+const update = (req, res) => {
+    const employe = employees.find(employe => employe.id === Number(req.params.id))
+    console.log(employe);
+    
+    
+    if(!employe){
+      return res.status(404).json({
+        error: '404! not found'
+      })
+    }
+    return res.json({
+        id: req.body.id,
+        name: req.body.name,
+        occupation: req.body.occupation,
+    })
+
+    
+  }
+
 module.exports = {
     index,
     store,
-    show
+    show,
+    update
 }
