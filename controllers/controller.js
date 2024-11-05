@@ -38,25 +38,25 @@ const store = (req, res) => {
 }
 
 const update = (req, res) => {
-    const employe = employees.find(employe => employe.id === Number(req.params.id))
-    console.log(employe);
-    const newEmploye = {
-        ...req.body,
-        id: req.body.id,
+    const employe = employees.findIndex(employe => employe.id === Number(req.params.id))
+    
+    if(!employe){
+        return res.status(404).json({
+          error: '404! not found'
+        })
+      }
+        employees[employe] = {
+        ...employees[employe],
         name: req.body.name,
-        occupation: req.body.occupation,   
-    }
-     employees[employe] = newEmploye
+        occupation: req.body.occupation,
+   }
+     
      
     fs.writeFileSync('./data/data.js',`module.exports=${JSON.stringify(employees,null,2)}`)
     
-    if(!employe){
-      return res.status(404).json({
-        error: '404! not found'
-      })
-    }
+    
     return res.json({
-       data: newEmploye
+       data: employees[employe]
     })
 
     
