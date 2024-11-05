@@ -6,8 +6,8 @@ module.exports=[
   },
   {
     "id": 2,
-    "name": "Bob",
-    "occupation": "Painter"
+    "name": "carlo",
+    "occupation": "muratore"
   },
   {
     "id": 3,
