@@ -24,7 +24,11 @@ const show = ('/post/:id', (req, res) => {
 
 const store = (req, res) => {
     const employe = {
-        ...req.body
+        id: employees[employees.length -1].id + 1,
+        name: req.body.name,
+        occupation: req.body.occupation,
+       
+
     }
     employees.push(employe)
     fs.writeFileSync('./data/data.js',`module.exports=${JSON.stringify(employees,null,2)}`)
