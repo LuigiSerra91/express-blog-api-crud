@@ -1,0 +1,16 @@
+{
+  "name": "bonus",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node appTwo.js",
+    "dev2": "node --watch --env-file=.env appTwo.js"
+  },
+  "author": "Luigi Serra",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
