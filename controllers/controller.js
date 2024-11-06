@@ -16,7 +16,8 @@ const show = ('/post/:id', (req, res) => {
         error: '404! not found'
       })
     }
-    return res.json({
+    return res.status(200).json({
+      status: 200,
       data: employees
     })
   })
@@ -55,7 +56,8 @@ const update = (req, res) => {
     fs.writeFileSync('./data/data.js',`module.exports=${JSON.stringify(employees,null,2)}`)
     
     
-    return res.json({
+    return res.status(200).json({
+       status: 200,
        data: employees[employe]
     })
 
