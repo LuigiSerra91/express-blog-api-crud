@@ -38,10 +38,39 @@ const store = (req, res) => {
         data: animeControllers
     })
 }
+const update = (req, res) => {
+    const anime = animeControllers.findIndex(anime => anime.id === Number(req.params.id))
+    
+    if(!anime){
+        return res.status(404).json({
+          error: '404! not found'
+        })
+      }
+        animeControllers[anime] = {
+        ...animeControllers[anime],
+        id: req.body.id,
+        title: req.body.title,
+        author: req.body.author,
+        description: req.body.description
+   }
+     
+     
+    fs.writeFileSync('./data/dataAnime.js',`module.exports=${JSON.stringify(animeControllers,null,2)}`)
+    
+    
+    return res.status(200).json({
+       status: 200,
+       data: animeControllers[anime]
+    })
+
+    
+  }
+
 
 
 module.exports = {
     index,
     show,
-    store
+    store,
+    update
 }
