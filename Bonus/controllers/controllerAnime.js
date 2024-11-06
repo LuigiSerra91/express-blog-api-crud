@@ -67,10 +67,35 @@ const update = (req, res) => {
   }
 
 
+const destroy = (req, res) => {
+    
+    const anime = animeControllers.find(anime => anime.id === parseInt(req.params.id));
+  
+    
+    if (!anime) {
+      return res.status(404).json({ error: "No anime found with that id" })
+    }
+  
+    
+    const neweAnime = animeControllers.filter((anime) => anime.id !== parseInt(req.params.id));
+  
+   
+    fs.writeFileSync('./data/dataAnime.js', `module.exports = ${JSON.stringify(neweAnime, null, 4)}`)
+  
+    
+    res.status(200).json({
+      status: 200,
+      data: neweAnime,
+      counter: neweAnime.length
+    })
+  
+  }
+
 
 module.exports = {
     index,
     show,
     store,
-    update
+    update,
+    destroy
 }
