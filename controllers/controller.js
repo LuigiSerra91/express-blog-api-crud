@@ -62,9 +62,34 @@ const update = (req, res) => {
     
   }
 
+  const destroy = (req, res) => {
+    // find the pizza by id
+    const employe = employees.find(employe => employe.id === parseInt(req.params.id));
+  
+    // check if the user is deleting the correct pizza
+    if (!employe) {
+      return res.status(404).json({ error: "No pizza found with that id" })
+    }
+  
+    // remove the pizza from the menu
+    const newemploye = employees.filter((employees) => employees.id !== parseInt(req.params.id));
+  
+    // update the js file
+    fs.writeFileSync('./data/data.js', `module.exports = ${JSON.stringify(newemploye, null, 4)}`)
+  
+    // return the updated menu item
+    res.status(200).json({
+      status: 200,
+      data: newemploye,
+      counter: newemploye.length
+    })
+  
+  }
+
 module.exports = {
     index,
     store,
     show,
-    update
+    update,
+    destroy
 }

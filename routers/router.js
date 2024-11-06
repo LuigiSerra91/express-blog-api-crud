@@ -7,4 +7,5 @@ router.post('/', routerController.store)
 router.get('/', routerController.index)
 router.get('/:id', routerController.show)
 router.put('/:id', routerController.update)
+router.delete('/:id', routerController.destroy)
 module.exports = router 
