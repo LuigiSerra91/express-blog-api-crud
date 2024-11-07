@@ -26,8 +26,10 @@ const show = ('/post/:id', (req, res) => {
 const store = (req, res) => {
     const employe = {
         id: employees[employees.length -1].id + 1,
-        name: req.body.name,
-        occupation: req.body.occupation,
+        title: req.body.title,
+        author: req.body.author,
+        img: req.body.img,
+        description: req.body.description
        
 
     }
@@ -48,8 +50,10 @@ const update = (req, res) => {
       }
         employees[employe] = {
         ...employees[employe],
-        name: req.body.name,
-        occupation: req.body.occupation,
+        title: req.body.title,
+        author: req.body.author,
+        img: req.body.img,
+        description: req.body.description
    }
      
      
