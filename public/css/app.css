@@ -10,7 +10,7 @@ img {
 
 .card{
     min-height: 450px;
-    
+  
 }
 
 footer{
@@ -19,5 +19,6 @@ footer{
     
     p{
         font-size: 30px;
+        
     }
 }
