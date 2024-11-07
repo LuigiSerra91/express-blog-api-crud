@@ -3,6 +3,7 @@ const app = express()
 const HOST = 'http://127.0.0.1'
 const PORT = 3004
 const animeRouter = require('./routers/routerAnime.js')
+const notFoundMiddleware = require('./middleware/notFoundMiddleware.js')
 app.use(express.json())
 app.listen(3004 , () =>{
     console.log(`this server is on in${HOST}:${PORT}`);
@@ -17,5 +18,5 @@ app.get('/', (req, res)=>{
 app.use('/anime', animeRouter)
 
 
-
+app.use(notFoundMiddleware)
 
