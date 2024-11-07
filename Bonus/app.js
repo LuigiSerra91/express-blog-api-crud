@@ -10,16 +10,17 @@ app.listen(3004 , () =>{
     console.log(`this server is on in${HOST}:${PORT}`);
     
 })
-
+app.use('/', logger)
+app.use(notFoundMiddleware)
 app.get('/', (req, res)=>{
     res.send('ciao')
 })
-app.use('/', logger)
+
 
 app.use('/anime', animeRouter)
 
 
-app.use(notFoundMiddleware)
+
 
 
 
