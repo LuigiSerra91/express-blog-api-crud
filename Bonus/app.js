@@ -11,7 +11,6 @@ app.listen(3004 , () =>{
     
 })
 app.use('/', logger)
-app.use(notFoundMiddleware)
 app.get('/', (req, res)=>{
     res.send('ciao')
 })
@@ -22,6 +21,7 @@ app.use('/anime', animeRouter)
 
 
 
+app.use(notFoundMiddleware)
 
 
 
