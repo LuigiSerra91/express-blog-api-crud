@@ -18,7 +18,7 @@ const show = ('/post/:id', (req, res) => {
     }
     return res.status(200).json({
       status: 200,
-      data: employees
+      data: employe
     })
   })
 
