@@ -69,15 +69,15 @@ const update = (req, res) => {
   }
 
   const destroy = (req, res) => {
-    // find the pizza by id
+    // find the post by id
     const employe = employees.find(employe => employe.id === parseInt(req.params.id));
   
-    // check if the user is deleting the correct pizza
+    // check if the user is deleting the correct post
     if (!employe) {
-      return res.status(404).json({ error: "No pizza found with that id" })
+      return res.status(404).json({ error: "No post found whit this id" })
     }
   
-    // remove the pizza from the menu
+    // remove the post from the menu
     const newemploye = employees.filter((employees) => employees.id !== parseInt(req.params.id));
   
     // update the js file

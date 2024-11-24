@@ -1,13 +1,13 @@
 const express = require('express')
 const app = express()
-const HOST = 'http://127.0.0.1'
-const PORT = 3004
+const HOST = process.env.HOST
+const PORT = process.env.PORT
 const animeRouter = require('./routers/routerAnime.js')
 const notFoundMiddleware = require('./middleware/notFoundMiddleware.js')
 const logger = require('./middleware/loggerMiddleware.js')
 const error500 = require('./middleware/error500.js')
 app.use(express.json())
-app.listen(3004 , () =>{
+app.listen(PORT , () =>{
     console.log(`this server is on in${HOST}:${PORT}`);
     
 })
